@@ -158,7 +158,7 @@ resource "aws_default_security_group" "allow_ssh_from_public" {
         from_port   = 80
         to_port     = 80
         protocol    = "tcp"
-        cidr_blocks = ["91.189.91.39/32","91.189.91.38/32","34.241.117.189/32","34.253.229.19/32","34.253.189.82/32","54.246.214.20/32","54.229.225.193/32","54.229.116.227/32"]
+        cidr_blocks = ["0.0.0.0/0"]
     }
 }
 
@@ -184,7 +184,7 @@ resource "aws_security_group" "allow_ssh_from_private" {
         from_port   = 80
         to_port     = 80
         protocol    = "tcp"
-        cidr_blocks = ["91.189.91.39/32","91.189.91.38/32","34.241.117.189/32","34.253.229.19/32","34.253.189.82/32","54.246.214.20/32","54.229.225.193/32","54.229.116.227/32"]
+        cidr_blocks = ["0.0.0.0/0"]
     }
 }
 data "template_file" "user_data" {
