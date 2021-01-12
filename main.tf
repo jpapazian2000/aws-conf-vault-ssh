@@ -199,6 +199,7 @@ resource "aws_instance" "bastion" {
     instance_type               = var.instance_type
     key_name                    = aws_key_pair.ubuntu_kp.key_name
     subnet_id                   = aws_subnet.private.id
+    user_data                   = data.template_file.user_data.rendered
     vpc_security_group_ids      = [
         aws_default_security_group.allow_ssh_from_public.id,
     ]
