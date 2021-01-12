@@ -152,6 +152,14 @@ resource "aws_default_security_group" "allow_ssh_from_public" {
         protocol    = "tcp"
         cidr_blocks = [data.aws_subnet.select_private.cidr_block]
     }
+    egress {
+        description = "allows for apt-get"
+        #self        = "true"
+        from_port   = 22
+        to_port     = 22
+        protocol    = "tcp"
+        cidr_blocks = [91.189.91.39/32,34.253.29.19/32]
+    }
 }
 
 resource "aws_security_group" "allow_ssh_from_private" {
