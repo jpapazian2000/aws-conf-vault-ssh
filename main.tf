@@ -204,8 +204,7 @@ resource "aws_instance" "bastion" {
         aws_default_security_group.allow_ssh_from_public.id,
     ]
     associate_public_ip_address = true
-    depends_on      = [aws_internet_gateway.gw]
-    depends_on      = [aws_default_security_group.allow_ssh_from_public]
+    depends_on      = [aws_internet_gateway.gw,aws_default_security_group.allow_ssh_from_public]
 
     tags = {
         Name        = "jpapazian-${var.project}-bastion"
@@ -227,8 +226,7 @@ resource "aws_instance" "ubuntu_server" {
     ]
     associate_public_ip_address = false
     user_data                   = data.template_file.user_data.rendered
-    depends_on      = [aws_internet_gateway.gw]
-    depends_on      = [aws_security_group.allow_ssh_from_private]
+    depends_on      = [aws_internet_gateway.gw,aws_security_group.allow_ssh_from_private]
 
     tags = {
         Name        = "jpapazian-${var.project}-server"
