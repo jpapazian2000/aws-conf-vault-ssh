@@ -1,6 +1,10 @@
 #cloud-config
+
+package_update: true
+
 packages:
   - jq
+
 # Add users to the system. Users are added after groups are added.
 users:
   - default
