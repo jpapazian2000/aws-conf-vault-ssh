@@ -8,6 +8,10 @@ users:
   - default
   - name: ubuntu
     sudo: ALL=(ALL) NOPASSWD:ALL
+package_update: true
+
+packages:
+  - jq 
 runcmd:
   - echo "${ssh_key}" >> /etc/ssh/trusted-user-ca-keys.pem
   - echo "TrustedUserCAKeys /etc/ssh/trusted-user-ca-keys.pem" >> /etc/ssh/sshd_config
