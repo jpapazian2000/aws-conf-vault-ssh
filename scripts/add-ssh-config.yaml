@@ -1,4 +1,4 @@
-#cloud-configvi
+#cloud-config
 # Add groups to the system
 # Adds the ubuntu group with members 'root' and 'sys'
 # and the empty group hashicorp.
