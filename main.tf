@@ -158,7 +158,7 @@ resource "aws_default_security_group" "allow_ssh_from_public" {
         from_port   = 22
         to_port     = 22
         protocol    = "tcp"
-        cidr_blocks = [91.189.91.39/32,34.253.29.19/32]
+        cidr_blocks = ["91.189.91.39/32","34.253.29.19/32"]
     }
 }
 
