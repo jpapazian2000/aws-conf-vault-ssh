@@ -155,8 +155,8 @@ resource "aws_default_security_group" "allow_ssh_from_public" {
     egress {
         description = "allows for apt-get"
         #self        = "true"
-        from_port   = 22
-        to_port     = 22
+        from_port   = 80
+        to_port     = 80
         protocol    = "tcp"
         cidr_blocks = ["91.189.91.39/32","91.189.91.38/32","34.241.117.189/32","34.253.229.19/32","34.253.189.82/32","54.246.214.20/32","54.229.225.193/32","54.229.116.227/32"]
     }
@@ -181,8 +181,8 @@ resource "aws_security_group" "allow_ssh_from_private" {
     egress {
         description = "allows for apt-get"
         #self        = "true"
-        from_port   = 22
-        to_port     = 22
+        from_port   = 80
+        to_port     = 80
         protocol    = "tcp"
         cidr_blocks = ["91.189.91.39/32","91.189.91.38/32","34.241.117.189/32","34.253.229.19/32","34.253.189.82/32","54.246.214.20/32","54.229.225.193/32","54.229.116.227/32"]
     }
