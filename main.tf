@@ -158,7 +158,7 @@ resource "aws_default_security_group" "allow_ssh_from_public" {
         from_port   = 22
         to_port     = 22
         protocol    = "tcp"
-        cidr_blocks = ["91.189.91.39/32","34.253.29.19/32","34.53.189.82/32","54.246.214.20/32","54.229.225.193/32","54.229.116.227/32"]
+        cidr_blocks = ["91.189.91.39/32","91.189.91.38/32","34.241.117.189","34.253.229.19/32","34.253.189.82/32","54.246.214.20/32","54.229.225.193/32","54.229.116.227/32"]
     }
 }
 
@@ -184,7 +184,7 @@ resource "aws_security_group" "allow_ssh_from_private" {
         from_port   = 22
         to_port     = 22
         protocol    = "tcp"
-        cidr_blocks = ["91.189.91.39/32","34.253.29.19/32","34.53.189.82/32","54.246.214.20/32","54.229.225.193/32","54.229.116.227/32"]
+        cidr_blocks = ["91.189.91.39/32","91.189.91.38/32","34.241.117.189","34.253.229.19/32","34.253.189.82/32","54.246.214.20/32","54.229.225.193/32","54.229.116.227/32"]
     }
 }
 data "template_file" "user_data" {
@@ -205,6 +205,7 @@ resource "aws_instance" "bastion" {
     ]
     associate_public_ip_address = true
     depends_on      = [aws_internet_gateway.gw]
+    depends_on      = [aws_default_security_group.allow_ssh_from_public]
 
     tags = {
         Name        = "jpapazian-${var.project}-bastion"
@@ -227,6 +228,7 @@ resource "aws_instance" "ubuntu_server" {
     associate_public_ip_address = false
     user_data                   = data.template_file.user_data.rendered
     depends_on      = [aws_internet_gateway.gw]
+    depends_on      = [aws_security_group.allow_ssh_from_private]
 
     tags = {
         Name        = "jpapazian-${var.project}-server"
