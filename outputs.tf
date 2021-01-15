@@ -10,6 +10,10 @@ output "ssh-ca-public_key" {
     value = chomp(data.terraform_remote_state.ssh_ca_public_key.outputs.vault_public_key)
 }
 
+output "vault-ssh_token" {
+    value = chomp(data.terraform_remote_state.ssh_ca_public_key.outputs.vault_ssh_token)
+}
+
 #output "ubuntu_bastion-server_private_ip" {
 #    value = aws_instance.bastion.private_ip
 #}
